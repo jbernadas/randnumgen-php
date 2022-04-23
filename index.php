@@ -1,12 +1,3 @@
-
-<?php
-    function php_rand_num() {
-        $rnumb = '';
-        $rnumb = rand();
-        echo $rnumb;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +11,7 @@
         background: #fff2f2;
     }
     h1.text-center {
-        margin-top: 2vw;
+        margin-top: .2vw;
         color: grey;
         font-size: 4rem;
     }
@@ -32,30 +23,30 @@
         border: 6px inset #ff9b9b;
         line-height: 4rem;
         border-radius: 20px;
-        margin-top: 30vh;
+        margin-top: 26vh;
         color: #6a6a6a;
         overflow-wrap: anywhere;
         background: #d2ebff;
+        max-width: 500px;
+        margin: 26vh auto 0;
     }
     #num-box-wrapper .btn {
         padding: 10px 65px;
         border-radius: 7px;
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Random Number Generator</h1>
+            <h1 class="text-center">PHP Random Number Generator</h1>
             <div class="col-md-6 col-sm-8 col-xs-12 offset-md-3 offset-sm-2">
                 <div id="num-box-wrapper" class="text-center">
                     <div class="num-box" id="numbBox">Hello World!</div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="btn btn-primary" onclick="clientSideNumbBoxUpdater()">Client Side!</div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="btn btn-success" onclick="serverSideNumbBoxUpdater()">Server Side!</div>
+                        <div class="col-md-12">
+                            <div class="btn btn-primary" onclick="serverSideNumbBoxUpdater()">Click Me!</div>
                         </div>
                     </div>
                 </div>
@@ -63,15 +54,10 @@
         </div>
     </div>
     <script>
-        function randNumGen() {
-            return Math.floor(Math.random() * 100000000000000) * 1;
-        }
-        function clientSideNumbBoxUpdater() {
-            document.getElementById('numbBox').textContent = randNumGen()
-        }
         function serverSideNumbBoxUpdater() {
-            document.getElementById('numbBox').textContent = "<?php php_rand_num(); ?>";
-
+            $.ajax({url:"rand_num_gen.php", success:function(result){
+                $('#numbBox').text(result);
+            }})
         }
     </script>
 </body>
