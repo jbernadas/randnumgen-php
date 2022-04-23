@@ -34,6 +34,9 @@
         padding: 10px 65px;
         border-radius: 7px;
     }
+    .container:first-child {
+        height: 95vh;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -51,6 +54,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
+    </div>
+    <div class="container">
+        <div class="row">
+            <p id="copyright" class="bottom text-center">By J. Bernadas</p>
         </div>
     </div>
     <script>
